@@ -1,36 +1,37 @@
 #include "GameView.h"
 
-GameView::GameView(Board &board, Snake &snake, Controller &ctrl, Scoreboard &scoreboard) : board(board),
-                                                                                           snake(snake), ctrl(ctrl),
-                                                                                           scoreboard(scoreboard) {
+GameView::GameView(Board &board, GameObjects &gameObjects, Controller &ctrl, Scoreboard &scoreboard) : gameObjects(
+        gameObjects), ctrl(ctrl), scoreboard(scoreboard) {
     height = board.getBoardHeight();
     width = board.getBoardWidth();
-    if (!grass.loadFromFile("/home/omen/Snake/Assets/grass.png"))
+    if (!grass.loadFromFile("../Assets/grass.png"))
         std::cout << "ERROR";
-    if (!pumpkin.loadFromFile("/home/omen/Snake/Assets/pumpkin.png"))
+    if (!pumpkin.loadFromFile("../Assets/pumpkin.png"))
         std::cout << "ERROR";
-    if (!seed.loadFromFile("/home/omen/Snake/Assets/seed.png"))
+    if (!seed.loadFromFile("../Assets/seed.png"))
         std::cout << "ERROR";
-    if (!font.loadFromFile("/home/omen/Snake/Assets/font"))
+    if (!font.loadFromFile("../Assets/font"))
         std::cout << "ERROR";
-    if (!map.loadFromFile("/home/omen/Snake/Assets/map.jpg"))
+    if (!map.loadFromFile("../Assets/map.jpg"))
         std::cout << "ERROR";
-    if (!scoreboardView.loadFromFile("/home/omen/Snake/Assets/scoreboard.jpg"))
+    if (!scoreboardView.loadFromFile("../Assets/scoreboard.jpg"))
         std::cout << "ERROR";
-
-    gameBegun = false;
 
     scale = {0.5, 0.5};
 }
 
-void GameView::draw(sf::RenderWindow &window) { //Usunąć pętlę for ?
+void GameView::draw(sf::RenderWindow &window) {
     setFont();
     sf::Sprite Map(map), Grass(grass), Pumpkin(pumpkin), Seed(seed);
+
     window.draw(Map);
     window.draw(score);
-    if(ctrl.getPlayButton() == NOT_IN_GAME)
-    window.draw(gameBegin);
+
+    if (ctrl.getPlayButton() == NOT_IN_GAME)
+        window.draw(gameBegin);
+
     window.draw(scoreBoard);
+
     Grass.setScale(scale.x, scale.y);
     Pumpkin.setScale(scale.x, scale.y);
     Seed.setScale(scale.x, scale.y);
@@ -39,20 +40,27 @@ void GameView::draw(sf::RenderWindow &window) { //Usunąć pętlę for ?
         for (col = 1; col < width - 1; col++) {
             seedSize = grassSize = {static_cast<float>(105 + ((col - 1) * 35.2)),
                                     static_cast<float>(148 + ((row - 1) * 34.8))};
-            pumpkinSize = {static_cast<float>(105 + ((col - 1) * 35)), static_cast<float>(148 + ((row - 1) * 34.8))}; // wektory rozmiarowe
+            pumpkinSize = {static_cast<float>(105 + ((col - 1) * 35)),
+                           static_cast<float>(148 + ((row - 1) * 34.8))}; // wektory rozmiarowe
             Grass.setPosition(grassSize.x, grassSize.y);
             Seed.setPosition(seedSize.x, seedSize.y);
             Pumpkin.setPosition(pumpkinSize.x, pumpkinSize.y);
-            if (!board.hasApple(row, col))
+
+            if (gameObjects.getApple().rowCord != row || gameObjects.getApple().colCord != col)
                 window.draw(Grass);
-            if (board.hasSnake(row, col))
-                window.draw(Pumpkin);
-            if (board.hasApple(row, col))
+
+            for (auto &&element: gameObjects.getSnake())
+                if (element.rowCord == row && element.colCord == col)
+                    window.draw(Pumpkin);
+
+            if (gameObjects.getApple().rowCord == row && gameObjects.getApple().colCord == col)
                 window.draw(Seed);
         }
     }
-    if (snake.getGameState() == LOSS)
+
+    if (gameObjects.getGameState() == LOSS)
         window.draw(lose);
+
     if (ctrl.getPlayButton() == SCOREBOARD)
         drawScoreboard(window);
 }
@@ -60,7 +68,7 @@ void GameView::draw(sf::RenderWindow &window) { //Usunąć pętlę for ?
 
 void GameView::setFont() {
     score.setFont(font);
-    score.setString("SCORE: " + std::to_string(snake.getScore()));
+    score.setString("SCORE: " + std::to_string(gameObjects.getScore()));
     score.setPosition(70, 60);
     score.setCharacterSize(70);
     score.setFillColor(sf::Color::White);

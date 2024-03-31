@@ -11,7 +11,7 @@ void Scoreboard::addToScoreboard(int points) {
 }
 
 void Scoreboard::sortScoreBoard() {
-    std::ifstream file("/home/omen/Programy/C++/Snake/Scoreboard.txt");
+    std::ifstream file("../Scoreboard.txt");
     if (file.is_open()) {
         for (std::string line; getline(file, line);) {
             int vectorElement = std::stoi(line);
@@ -26,7 +26,7 @@ void Scoreboard::sortScoreBoard() {
 void Scoreboard::setScoreBoard() {
     if (highScore.size() > 10)
         highScore.resize(10);
-    std::ofstream file("/home/omen/Programy/C++/Snake/Scoreboard.txt", std::ios::trunc);
+    std::ofstream file("../Scoreboard.txt", std::ios::trunc);
     if (file.is_open()) {
         for (auto &&element: highScore)
             file << element << '\n';

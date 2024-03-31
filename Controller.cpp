@@ -1,24 +1,20 @@
 #include "Controller.h"
 
-Controller::Controller(Board &board, Snake &snake, MenuController &menuController, sf::RenderWindow &window,
-                       Scoreboard &scoreboard) : board(
-        board), snake(snake),
-                                                 menuController(
-                                                         menuController),
-                                                 scoreboard(scoreboard), window(window) {
+Controller::Controller(GameObjects &gameObjects, MenuController &menuController, sf::RenderWindow &window,
+                       Scoreboard &scoreboard) : gameObjects(gameObjects),scoreboard(scoreboard), window(window) {
     button = NOT_IN_GAME;
     fileSaved = false;
     if (menuController.getDifficultyChoice() == 'E') {
         mode = EASY;
-        snake.setScorePoints(1);
+        gameObjects.setScorePoints(1);
     }
     if (menuController.getDifficultyChoice() == 'N') {
         mode = NORMAL;
-        snake.setScorePoints(2);
+        gameObjects.setScorePoints(2);
     }
     if (menuController.getDifficultyChoice() == 'H') {
         mode = HARD;
-        snake.setScorePoints(3);
+        gameObjects.setScorePoints(3);
     }
 }
 
@@ -29,19 +25,18 @@ void Controller::play(sf::Event &event) {
         seconds = sf::seconds(0.1f);
     if (mode == HARD)
         seconds = sf::seconds(0.05f);
-    if ((event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::S) && snake.getGameState() == RUNNING)
+    if ((sf::Keyboard::isKeyPressed(sf::Keyboard::W)|| sf::Keyboard::isKeyPressed(sf::Keyboard::S)) && gameObjects.getGameState() == RUNNING)
         button = IN_GAME;
     if (button == IN_GAME) {
-        if (event.key.code == sf::Keyboard::W ) {
-            snake.setDirection(UP);
-        } else if (event.key.code == sf::Keyboard::A  ) {
-            snake.setDirection(LEFT);
-        } else if (event.key.code == sf::Keyboard::S ) {
-            snake.setDirection(DOWN);
-        } else if (event.key.code == sf::Keyboard::D ) {
-            snake.setDirection(RIGHT);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+            gameObjects.setDirection(UP);
+        } else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+            gameObjects.setDirection(LEFT);
+        } else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+            gameObjects.setDirection(DOWN);
+        } else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+            gameObjects.setDirection(RIGHT);
         }
-
 
         //Odmierzanie czasu napisane przy pomocy Chatu GPT
         static sf::Clock clock;
@@ -50,22 +45,18 @@ void Controller::play(sf::Event &event) {
         if (elapsed == sf::Time::Zero) {
             elapsed = clock.getElapsedTime();
         }
-
-
         sf::Time delta = clock.getElapsedTime() - elapsed;
         if (delta >= seconds) {
-            snake.moveInDirection();
+            gameObjects.moveInDirection();
             elapsed = clock.getElapsedTime();
         }
     }
-    if (snake.getGameState() == LOSS) {
+    if (gameObjects.getGameState() == LOSS) {
         if (!fileSaved) {
-            scoreboard.addToScoreboard(snake.getScore());
+            scoreboard.addToScoreboard(gameObjects.getScore());
             fileSaved = true;
         }
         if (event.type == sf::Event::MouseButtonPressed) {
-
-
             if (button != SCOREBOARD && checkScoreBoardButtonPosition() == IN_GAME_SCOREBOARD_BUTTON &&
                 event.mouseButton.button == sf::Mouse::Left) {
                 button = SCOREBOARD;
@@ -74,12 +65,8 @@ void Controller::play(sf::Event &event) {
             if (event.mouseButton.button == sf::Mouse::Left && checkScoreBoardButtonPosition() == SCOREBOARD_EXIT_BUTTON) {
                 window.close();
             }
-
-
         }
     }
-
-
 }
 
 PlayButton Controller::getPlayButton() const {

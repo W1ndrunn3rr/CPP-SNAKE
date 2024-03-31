@@ -1,4 +1,4 @@
-# Install script for directory: /home/omen/Programy/C++/Snake
+# Install script for directory: /home/omen/Gitlab/snake_bg_pn9_275409/Snake
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/omen/Programy/C++/Snake/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/omen/Gitlab/snake_bg_pn9_275409/Snake/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,3 +1,3 @@
-/home/omen/Programy/C++/Snake/cmake-build-debug/CMakeFiles/Snake.dir
-/home/omen/Programy/C++/Snake/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/omen/Programy/C++/Snake/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/omen/Gitlab/snake_bg_pn9_275409/Snake/cmake-build-debug/CMakeFiles/Snake.dir
+/home/omen/Gitlab/snake_bg_pn9_275409/Snake/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/omen/Gitlab/snake_bg_pn9_275409/Snake/cmake-build-debug/CMakeFiles/rebuild_cache.dir

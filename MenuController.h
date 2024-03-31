@@ -3,12 +3,14 @@
 
 #include "SFML/Graphics.hpp"
 
+//!Pomocniczy enum do pozycji myszki w menu
 enum MenuChoice {
     PLAY,
     EXIT,
     DEFAULT
 };
 
+//!Pomocniczy enum do pozycji myszki przy wyborze poziomu
 enum LevelChoice {
     EASY_LEVEL,
     NORMAL_LEVEL,
@@ -22,11 +24,13 @@ private:
     char click = 'M';
     char difficultyChoice = 'C';
 private:
+    //! Metoda do sprawdzenia pozycji myszy w menu
     MenuChoice checkMenuChoiceButtonPosition();
-
+//! Metoda do sprawdzenia pozycji myszy przy wyborze poziomu
     LevelChoice checkLevelChoiceButtonPosition();
 
 public:
+    //! Konstruktor kontrolera menu
     explicit MenuController(sf::Window &window);
 
     //!Obsługa zdarzeń menu

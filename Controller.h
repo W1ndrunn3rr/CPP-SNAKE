@@ -1,11 +1,11 @@
 #ifndef SNAKE_CONTROLLER_H
 #define SNAKE_CONTROLLER_H
 
-#include <SFML/Window/Event.hpp>
+#include <SFML/Graphics.hpp>
 #include "Board.h"
-#include "Snake.h"
 #include "MenuController.h"
 #include "Scoreboard.h"
+#include "GameObjects.h"
 
 //! Enum do lokalizacji ekranu
 enum PlayButton {
@@ -16,13 +16,13 @@ enum PlayButton {
 
 //! Enum trudności gry
 enum GameMode {
-    DEBUG,
     EASY,
     NORMAL,
     HARD
 };
 
-enum ScoreboardButton{
+//! Enum pomocniczy do sprawdzania lokalizacji kursora
+enum ScoreboardButton {
     IN_GAME_SCOREBOARD_BUTTON,
     SCOREBOARD_EXIT_BUTTON,
     DEFAULT_BUTTON
@@ -30,25 +30,27 @@ enum ScoreboardButton{
 
 
 class Controller {
-    Board &board;
-    Snake &snake;
-    MenuController &menuController;
+
+    GameObjects &gameObjects;
     Scoreboard &scoreboard;
+    sf::RenderWindow &window;
+
+    //! Sprawdzenie pozycji kursora myszy przycisku tablicy wyników
+    ScoreboardButton checkScoreBoardButtonPosition();
+private:
     PlayButton button;
     sf::Time seconds;
     GameMode mode;
-    sf::RenderWindow &window;
     bool fileSaved;
-
-    ScoreboardButton checkScoreBoardButtonPosition();
 public :
-    Controller(Board &board, Snake &snake, MenuController &menuController, sf::RenderWindow &window,
+    //! Konstruktor inicjujący kontroler
+    Controller(GameObjects &gameObjects, MenuController &menuController, sf::RenderWindow &window,
                Scoreboard &scoreboard);
 
     //!Metoda kontrolująca rozgrywkę
     void play(sf::Event &event);
 
-    //!Getter
+    //!Getter przycisku stanu gry
     PlayButton getPlayButton() const;
 };
 

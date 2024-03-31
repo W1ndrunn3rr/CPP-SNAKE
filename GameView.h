@@ -3,8 +3,8 @@
 
 #include "Board.h"
 #include "Menu.h"
+#include "GameObjects.h"
 #include "MenuController.h"
-#include "Snake.h"
 #include "Controller.h"
 
 //! Pomocnicza struktura do wektora rozmiarów
@@ -12,26 +12,28 @@ struct Size{
     float x, y;
 };
 
-
 class GameView {
-    int height, width;
-    Board &board;
-    Snake &snake;
-    bool gameBegun;
+private:
+    GameObjects &gameObjects;
     Controller &ctrl;
     Scoreboard &scoreboard;
-    sf::Texture map,grass,pumpkin,seed,scoreboardView;
-    sf::Font font;
-    sf::Text score,scoreBoardText,scoreBoard,gameBegin,lose;
-    int row,col;
-    Size scale,grassSize,seedSize,pumpkinSize;
 
     //!Metoda ustawia czcionki napisów
     void setFont();
-//! Metoda do rysowania tablicy wyników
+
+    //! Metoda do rysowania tablicy wyników
     void drawScoreboard(sf::RenderWindow &window);
+private:
+    int height, width;
+    sf::Texture map,grass,pumpkin,seed,scoreboardView;
+    sf::Font font;
+    sf::Text score,scoreBoardText,scoreBoard,gameBegin,lose;
+    int row{},col{};
+    Size scale{},grassSize{},seedSize{},pumpkinSize{};
+
 public:
-    GameView(Board& board,Snake &snake, Controller &ctrl,Scoreboard &scoreboard);
+    //! Konstruktor widoku gry
+    GameView(Board& board,GameObjects &gameObjects, Controller &ctrl,Scoreboard &scoreboard);
     //! Metoda do rysowania gry za pomocą SFML
     void draw(sf::RenderWindow& window);
 };

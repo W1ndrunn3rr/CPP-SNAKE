@@ -94,6 +94,12 @@
 		<Unit filename="/home/omen/Gitlab/snake_bg_pn9_275409/Snake/Controller.h">
 			<Option target="Snake"/>
 		</Unit>
+		<Unit filename="/home/omen/Gitlab/snake_bg_pn9_275409/Snake/GameObjects.cpp">
+			<Option target="Snake"/>
+		</Unit>
+		<Unit filename="/home/omen/Gitlab/snake_bg_pn9_275409/Snake/GameObjects.h">
+			<Option target="Snake"/>
+		</Unit>
 		<Unit filename="/home/omen/Gitlab/snake_bg_pn9_275409/Snake/GameView.cpp">
 			<Option target="Snake"/>
 		</Unit>
@@ -116,12 +122,6 @@
 			<Option target="Snake"/>
 		</Unit>
 		<Unit filename="/home/omen/Gitlab/snake_bg_pn9_275409/Snake/Scoreboard.h">
-			<Option target="Snake"/>
-		</Unit>
-		<Unit filename="/home/omen/Gitlab/snake_bg_pn9_275409/Snake/Snake.cpp">
-			<Option target="Snake"/>
-		</Unit>
-		<Unit filename="/home/omen/Gitlab/snake_bg_pn9_275409/Snake/Snake.h">
 			<Option target="Snake"/>
 		</Unit>
 		<Unit filename="/home/omen/Gitlab/snake_bg_pn9_275409/Snake/main.cpp">

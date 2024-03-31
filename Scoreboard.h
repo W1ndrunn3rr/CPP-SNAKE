@@ -17,7 +17,7 @@ class Scoreboard {
 
     // Scoreboard(const Scoreboard &) = delete;
 public :
-
+    //! Konstruktor tablicy wyników
     Scoreboard();
 
 //! Metoda pozwala dodać wyniki do ekranu

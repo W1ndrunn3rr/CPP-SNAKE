@@ -1,51 +1,26 @@
-//
-// Created by omen on 09.05.23.
-//
-
 #ifndef SNAKE_BOARD_H
 #define SNAKE_BOARD_H
+
 
 #include <vector>
 #include<iostream>
 
-struct Field {
-    bool hasApple;
-    bool hasSnake;
-};
-
-enum GameMode {
-    DEBUG,
-    EASY,
-    NORMAL,
-    HARD
-};
-
-enum GameState {
-    RUNNING,
-    FINISHED_WIN,
-    FINISHED_LOSS
-};
-
+//! Klasa reprezentuje planszę - stworzona na potrzeby fizycznej reprezentacji wymiarów , nie robi nic innego, poza przekazaniem
+//! wysokości i szerokości
 class Board {
-    int height, width, appleCounter;
-    Field board[100][100];
-    GameMode mode;
-    GameState state;
+    int height{}, width{};
 public:
     Board();
 
-    Board(int height, int width, GameMode mode);
+    //! Konstruktor planszy, inicjujący wymiary ogólne
+    Board(int height, int width);
 
+    //!Getter szerokości
     int getBoardWidth() const;
 
+    //!Getter wysokości
     int getBoardHeight() const;
 
-    void setSnake(int row, int col);
-
-    void placeSnake(std::vector <Field> vec, int row, int col, int mode);
-
-
 };
-
 
 #endif //SNAKE_BOARD_H

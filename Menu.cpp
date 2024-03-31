@@ -6,16 +6,16 @@ Menu::Menu()= default;
 
 void Menu::drawMenu(sf::RenderWindow &window, char click,char difficultyChoice) {
     sf::Texture texture, gameTexture;
-    if (!texture.loadFromFile("/home/omen/Snake/Assets/menu.jpg"))
+    if (!texture.loadFromFile("../Assets/menu.jpg"))
         std::cout << "ERROR";
 
-    if (!gameTexture.loadFromFile("/home/omen/Snake/Assets/texture"))
+    if (!gameTexture.loadFromFile("../Assets/texture"))
         std::cout << "ERROR";
 
     sf::Sprite spriteGame(gameTexture), spriteMenu(texture);
 
     sf::Font font;
-    if (!font.loadFromFile("/home/omen/Programy/C++/Snake/Assets//font")) {
+    if (!font.loadFromFile("../Assets/font")) {
         std::cout << "ERROR";
     }
     sf::Text textPlay, textQuit, levelChoice, textEasy, textNormal, textHard;

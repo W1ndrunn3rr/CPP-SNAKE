@@ -9,7 +9,7 @@ class Menu {
 public:
     Menu();
     //!Metoda pozwala na wyświetlenie menu
-    void drawMenu(sf::RenderWindow &window, char click,char difficultyChoice);
+   void drawMenu(sf::RenderWindow &window, char click,char difficultyChoice);
 };
 
 

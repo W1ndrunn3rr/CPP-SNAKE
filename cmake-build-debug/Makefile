@@ -177,6 +177,30 @@ Controller.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/Controller.cpp.s
 .PHONY : Controller.cpp.s
 
+GameObjects.o: GameObjects.cpp.o
+.PHONY : GameObjects.o
+
+# target to build an object file
+GameObjects.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/GameObjects.cpp.o
+.PHONY : GameObjects.cpp.o
+
+GameObjects.i: GameObjects.cpp.i
+.PHONY : GameObjects.i
+
+# target to preprocess a source file
+GameObjects.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/GameObjects.cpp.i
+.PHONY : GameObjects.cpp.i
+
+GameObjects.s: GameObjects.cpp.s
+.PHONY : GameObjects.s
+
+# target to generate assembly for a file
+GameObjects.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/GameObjects.cpp.s
+.PHONY : GameObjects.cpp.s
+
 GameView.o: GameView.cpp.o
 .PHONY : GameView.o
 
@@ -273,30 +297,6 @@ Scoreboard.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/Scoreboard.cpp.s
 .PHONY : Scoreboard.cpp.s
 
-Snake.o: Snake.cpp.o
-.PHONY : Snake.o
-
-# target to build an object file
-Snake.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/Snake.cpp.o
-.PHONY : Snake.cpp.o
-
-Snake.i: Snake.cpp.i
-.PHONY : Snake.i
-
-# target to preprocess a source file
-Snake.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/Snake.cpp.i
-.PHONY : Snake.cpp.i
-
-Snake.s: Snake.cpp.s
-.PHONY : Snake.s
-
-# target to generate assembly for a file
-Snake.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/Snake.cpp.s
-.PHONY : Snake.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -336,6 +336,9 @@ help:
 	@echo "... Controller.o"
 	@echo "... Controller.i"
 	@echo "... Controller.s"
+	@echo "... GameObjects.o"
+	@echo "... GameObjects.i"
+	@echo "... GameObjects.s"
 	@echo "... GameView.o"
 	@echo "... GameView.i"
 	@echo "... GameView.s"
@@ -348,9 +351,6 @@ help:
 	@echo "... Scoreboard.o"
 	@echo "... Scoreboard.i"
 	@echo "... Scoreboard.s"
-	@echo "... Snake.o"
-	@echo "... Snake.i"
-	@echo "... Snake.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
