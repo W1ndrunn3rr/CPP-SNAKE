@@ -1,0 +1,14 @@
+# ninja log v5
+1	7	1683661887710298000	CMakeFiles/Snake.dir/GameController.cpp.o	10ebffebe21f5ccf
+1	184	1683710024044922059	CMakeFiles/Snake.dir/main.cpp.o	fc2736bea403a9dc
+0	266	1683710054133040116	CMakeFiles/Snake.dir/Snake.cpp.o	3070d1d643acf3c2
+0	16	1688831076667388046	build.ninja	7963e14b8476c708
+1	8	1683661887710298000	CMakeFiles/Snake.dir/Score.cpp.o	9094e3909dce5758
+1	320	1683710019276903354	CMakeFiles/Snake.dir/Board.cpp.o	d410ab8a36e0cf43
+266	304	1683710054173040273	Snake	6b7e8e1da0a4554a
+0	12	1688831077091389986	CMakeFiles/Snake.dir/GameController.cpp.o	ffc6515301ab84f3
+0	12	1688831077091389986	CMakeFiles/Snake.dir/Score.cpp.o	71eaa3fc5aa927d0
+0	271	1688831077351391177	CMakeFiles/Snake.dir/main.cpp.o	bf9e0b984045ccef
+0	476	1688831077555392110	CMakeFiles/Snake.dir/Snake.cpp.o	860008290184a150
+0	488	1688831077567392165	CMakeFiles/Snake.dir/Board.cpp.o	61c1e2708e787352
+489	538	1688831077615392385	Snake	6b7e8e1da0a4554a
